@@ -1,0 +1,12 @@
+function isPalindrome(x: number): boolean {
+    if(x < 0) return false
+    if(x < 10) return true
+    if(x < 100) return x % 11 === 0
+    let str = x.toString()
+    let end = str.length - 1;
+    for(let start = 0; start < ~~(str.length / 2); start++){
+        if(str[start] !== str[end]) return false
+        end--
+    }
+    return true
+};
