@@ -1,0 +1,5 @@
+function isMatch(s: string, p: string): boolean {
+    p.replaceAll("*", "\*")
+    p.replaceAll(".", "\.")
+    return RegExp("\^" + p + "\$").test(s)
+};
