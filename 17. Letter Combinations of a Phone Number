@@ -1,0 +1,34 @@
+function letterCombinations(digits: string): string[] {
+    let arr = [[], [], ["a", "b", "c"], ["d", "e", "f"], ["g", "h", "i"], ["j", "k", "l"], ["m", "n", "o"], ["p", "q", "r", "s"], ["t", "u", "v"], ["w", "x", "y", "z"]]
+    const length = digits.length
+    if (length == 1) return arr[+digits]
+    let result = []
+    if (length == 2){
+        for(let i = 0; i < arr[+digits[0]].length; i++){
+            for(let j = 0; j < arr[+digits[1]].length; j++){
+                result.push( arr[+digits[0]][i] + arr[+digits[1]][j] )
+            }
+        }
+    }
+    else if (length == 3){
+        for(let i = 0; i < arr[+digits[0]].length; i++){
+            for(let j = 0; j < arr[+digits[1]].length; j++){
+                for(let k = 0; k < arr[+digits[2]].length; k++){
+                    result.push( arr[+digits[0]][i] + arr[+digits[1]][j] + arr[+digits[2]][k] )
+                }
+            }
+        }
+    }
+    else {
+        for(let i = 0; i < arr[+digits[0]].length; i++){
+            for(let j = 0; j < arr[+digits[1]].length; j++){
+                for(let k = 0; k < arr[+digits[2]].length; k++){
+                    for(let l = 0; l < arr[+digits[3]].length; l++){
+                        result.push( arr[+digits[0]][i] + arr[+digits[1]][j] + arr[+digits[2]][k] + arr[+digits[3]][l] )
+                    }
+                }
+            }
+        }
+    }
+    return result
+};
