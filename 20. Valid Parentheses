@@ -1,0 +1,46 @@
+function isValid(s: string): boolean {
+    if(s.length % 2 === 0){
+        if(s.split("(").length - 1 !== s.split(")").length - 1) return false
+        if(s.split("{").length - 1 !== s.split("}").length - 1) return false
+        if(s.split("[").length - 1 !== s.split("]").length - 1) return false
+        for(let i = 0; i < s.length - 1; i++){
+            let sI = s[i] //  { [ (
+            let sub = s.substr(0, i + 1)
+            if(sub.split("(").length - 1 < sub.split(")").length - 1) return false
+            if(sub.split("{").length - 1 < sub.split("}").length - 1) return false
+            if(sub.split("[").length - 1 < sub.split("]").length - 1) return false
+            if( sI === "{" && ( s[i + 1] === ")" || s[i + 1] === "]") 
+            || sI === "(" && ( s[i + 1] === "]" || s[i + 1] === "}") 
+            || sI === "[" && ( s[i + 1] === ")" || s[i + 1] === "}") ) return false
+            if(sI === "{"){
+                let count = 1
+                for(let j = i + 1; j < s.length; j++){
+                    if(s[j] === "{") count += 1
+                    if(s[j] === "}") count -= 1
+                    if(!count && ( j - i ) % 2 === 0) return false
+                    if(!count) break
+                }
+            }
+            if(sI === "["){
+                let count = 1
+                for(let j = i + 1; j < s.length; j++){
+                    if(s[j] === "[") count += 1
+                    if(s[j] === "]") count -= 1
+                    if(!count && ( j - i ) % 2 === 0) return false
+                    if(!count) break
+                }
+            }
+            if(sI === "("){
+                let count = 1
+                for(let j = i + 1; j < s.length; j++){
+                    if(s[j] === "(") count += 1
+                    if(s[j] === ")") count -= 1
+                    if(!count && ( j - i ) % 2 === 0) return false
+                    if(!count) break
+                }
+            }
+        }
+        return true
+    }
+    return false
+};
