@@ -1,0 +1,13 @@
+function search(nums: number[], target: number): number {
+    if(target >= nums[0]){
+        for(let i = 0; i < nums.length; i++){
+            if(nums[i] > target) return -1
+            if(nums[i] === target) return i
+        }
+    }
+    for(let i = nums.length - 1; i > -1; i--){
+        if(nums[i] < target) return -1
+        if(nums[i] === target) return i
+    }
+    return -1
+};
