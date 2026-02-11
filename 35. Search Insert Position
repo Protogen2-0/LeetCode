@@ -1,0 +1,8 @@
+function searchInsert(nums: number[], target: number): number {
+    if(nums[0] > target) return 0
+    let len = nums.length
+    for(let i = 0; i < len; i++){
+        if(nums[i] === target || nums[i] > target && nums[i - 1] < target) return i
+    }
+    return len
+};
