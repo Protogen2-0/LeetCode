@@ -5,7 +5,9 @@ function searchRange(nums: number[], target: number): number[] {
         if(nums[i] === target){
             if(start < 0) start = i
             end = i
+            continue
         }
+        if(start > -1) break
     }
     if(start === end) return [start, start]
     return [start, end]
