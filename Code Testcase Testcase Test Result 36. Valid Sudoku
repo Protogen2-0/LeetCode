@@ -1,0 +1,106 @@
+function isValidSudoku(board: string[][]): boolean {
+    for(let column = 0; column < 9; column++){
+        for(let row = 0; row < 9; row++){
+            let num = board[column][row]
+
+            if(num === ".") continue
+
+            for(let i = row + 1; i < 9; i++){
+                if(board[column][i] === num) return false 
+            }
+
+            for(let i = column + 1; i < 9; i++){
+                if(board[i][row] === num) return false 
+            }
+
+            if(column < 3){
+                if(row < 3){
+                    for(let x = 0; x < 3; x++){
+                        for(let y = 0; y < 3; y++){
+                            if( board[x][y] === num && !(y === row && x === column) ){
+                                return false
+                            }
+                        }
+                    }
+                }
+                else if(row < 6){
+                    for(let x = 0; x < 3; x++){
+                        for(let y = 3; y < 6; y++){
+                            if( board[x][y] === num && !(y === row && x === column) ){
+                                return false
+                            }
+                        }
+                    }
+                }
+                else{
+                    for(let x = 0; x < 3; x++){
+                        for(let y = 6; y < 9; y++){
+                            if( board[x][y] === num && !(y === row && x === column) ){
+                                return false
+                            }
+                        }
+                    }
+                }
+            }
+            else if(column < 6){
+                if(row < 3){
+                    for(let x = 3; x < 6; x++){
+                        for(let y = 0; y < 3; y++){
+                            if( board[x][y] === num && !(y === row && x === column) ){
+                                return false
+                            }
+                        }
+                    }
+                }
+                else if(row < 6){
+                    for(let x = 3; x < 6; x++){
+                        for(let y = 3; y < 6; y++){
+                            if( board[x][y] === num && !(y === row && x === column) ){
+                                return false
+                            }
+                        }
+                    }
+                }
+                else{
+                    for(let x = 3; x < 6; x++){
+                        for(let y = 6; y < 9; y++){
+                            if( board[x][y] === num && !(y === row && x === column) ){
+                                return false
+                            }
+                        }
+                    }
+                }
+            }
+            else{
+                if(row < 3){
+                    for(let x = 6; x < 9; x++){
+                        for(let y = 0; y < 3; y++){
+                            if( board[x][y] === num && !(y === row && x === column) ){
+                                return false
+                            }
+                        }
+                    }
+                }
+                else if(row < 6){
+                    for(let x = 6; x < 9; x++){
+                        for(let y = 3; y < 6; y++){
+                            if( board[x][y] === num && !(y === row && x === column) ){
+                                return false
+                            }
+                        }
+                    }
+                }
+                else{
+                    for(let x = 6; x < 9; x++){
+                        for(let y = 6; y < 9; y++){
+                            if( board[x][y] === num && !(y === row && x === column) ){
+                                return false
+                            }
+                        }
+                    }                    
+                }
+            }
+        }
+    }
+    return true
+};
