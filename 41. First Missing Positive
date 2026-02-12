@@ -1,0 +1,32 @@
+function firstMissingPositive(nums: number[]): number {
+    let arr = [...new Set( nums.filter(e => e > -1 ).sort( (a,b) => a-b ) ) ]
+    let len = arr.length
+    if( arr[0] > 1 || !len ) return 1
+    let start = 0
+    let end = len - 1
+    for(let i = 0; i < end + 1; i++){
+        if( ( end - start ) % 2 === 0){
+            let temp = ( end + start ) >> 1
+            if( arr[temp] - arr[start] === temp - start){
+                start = temp
+                if(i < start) i = start
+            }
+            else{
+                end = temp
+            }
+        }
+        else {
+            let temp = ( end + start - 1) >> 1
+            if( arr[temp] - arr[start] === temp - start){
+                start = temp
+                if(i < start) i = start
+            }
+            else{
+                end = temp
+            }
+        }
+        if(arr[i + 1] - arr[i] > 1) return arr[i] + 1
+        if(arr[i] - arr[i - 1] > 1) return arr[i] - 1
+    }
+    return arr[len - 1] + 1
+};
