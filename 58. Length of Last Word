@@ -1,0 +1,16 @@
+function lengthOfLastWord(s: string): number {
+    
+    // return s.split(" ").findLast(e=>e !== "").length
+    
+    let i = s.length - 1
+    let len = 0
+    while( /\s/.test(s[i]) && i > -1){
+        i--
+    }
+    while( /\w/.test(s[i]) && i > -1){
+        len++
+        i--
+    }
+    return len
+    
+};
