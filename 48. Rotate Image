@@ -1,0 +1,11 @@
+function rotate(matrix: number[][]): void {
+    let arr = []
+    for(let i = 0; i < matrix[0].length; i++){
+        let innerArr = []
+        for(let j = matrix.length - 1; j > -1; j--){
+            innerArr.push(matrix[j][i])
+        }
+        arr.push(innerArr)
+    }
+    arr.forEach((elem, index)=>matrix[index] = elem)
+};
