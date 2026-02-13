@@ -1,0 +1,30 @@
+function addBinary(a: string, b: string): string {
+
+    a.length >= b.length ? b = "0".repeat(a.length - b.length) + b : a = "0".repeat(b.length - a.length) + a
+
+    let remainder = 0
+    let str = ""
+    
+    for(let i = a.length - 1; i > -1; i--){
+        switch (+a[i] + +b[i] + remainder) {
+            case 0:
+                str = "0" + str
+                remainder = 0
+                break;
+            case 1:
+                str = "1" + str
+                remainder = 0
+                break;
+            case 2:
+                str = "0" + str
+                remainder = 1
+                break;
+            case 3:
+                str = "1" + str
+                remainder = 1
+                break;
+        }
+    }
+    if(remainder) str = "1" + str
+    return str
+};
