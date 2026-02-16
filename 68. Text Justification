@@ -1,0 +1,46 @@
+function fullJustify(words: string[], maxWidth: number): string[] {
+    let arr = []
+    let str = ""
+    let wordss = 0
+    for(let i = 0; i < words.length; i++){
+        if(words[i].length + str.length < maxWidth){
+            str = str ? str + " " + words[i] : words[i] // "This is an "
+            wordss++
+        }
+        else{
+            if(wordss === 1){ // "acknowledgment"
+                str = str + " ".repeat(maxWidth - str.length) // "acknowledgment  "  >  len = 16
+                arr.push(str)
+                str = words[i]
+                wordss = 1
+                continue
+            }
+
+            if( str.includes(" ") ){
+                let count = 1
+                while(str.length < maxWidth){
+                    str = str.replaceAll(" ".repeat(count), " ".repeat(count+1))
+                    count++
+                }
+                while(str.length > maxWidth){
+                    str = str.split("").reverse().join("").replace( " ".repeat(count), " ".repeat(count - 1) ).split("").reverse().join("")
+                }
+            }
+            else{
+                str = str + " ".repeat(maxWidth - str.length)
+            }
+            arr.push(str)
+            str = words[i]
+            wordss = 1
+            continue
+        }
+    }
+    str = str + " ".repeat(maxWidth - str.length)
+    arr.push(str)
+    if( arr[0] === " ".repeat(maxWidth) ){
+        arr = arr.reverse()
+        arr.pop()
+        arr = arr.reverse()
+    }
+    return arr
+};
