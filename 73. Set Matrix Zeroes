@@ -1,0 +1,22 @@
+function setZeroes(matrix: number[][]): void {
+    let arrays = []
+    let indexes = []
+    for(let i = 0; i < matrix.length; i++){
+        for(let j = 0; j < matrix[i].length; j++){
+            if(matrix[i][j] === 0){
+                if( !indexes.includes(j) ) indexes.push(j)
+                if( !arrays.includes(i) ) arrays.push(i)
+            }
+        }
+    }
+    for(let i = 0; i < arrays.length; i++){
+        for(let j = 0; j < matrix[i].length; j++){
+            matrix[arrays[i]][j] = 0
+        }
+    }
+    for(let i = 0; i < matrix.length; i++){
+        for(let j = 0; j < indexes.length; j++){
+            matrix[i][indexes[j]] = 0
+        }
+    }
+};
