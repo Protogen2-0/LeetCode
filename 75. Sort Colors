@@ -1,0 +1,17 @@
+function sortColors(nums: number[]): void {
+    let lastSortedIndex = 0
+    for(let i = 0; i < nums.length; i++){
+        if(nums[i] === 0){
+            nums[i] = nums[lastSortedIndex]
+            nums[lastSortedIndex] = 0
+            lastSortedIndex++
+        }
+    }
+    for(let i = lastSortedIndex; i < nums.length; i++){
+        if(nums[i] === 1){
+            nums[i] = nums[lastSortedIndex]
+            nums[lastSortedIndex] = 1
+            lastSortedIndex++
+        }
+    }
+}
