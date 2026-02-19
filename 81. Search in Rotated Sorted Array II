@@ -1,0 +1,15 @@
+function search(nums: number[], target: number): boolean {
+    if(nums[0] === target) return true
+    if(nums[nums.length - 1] === target) return true
+    if(nums[0] < target){
+        for(let i = 0; i < nums.length; i++){
+            if(nums[i] > target) return false
+            if(nums[i] === target) return true
+        }
+    }
+    for(let i = nums.length - 1; i > -1; i--){
+        if(nums[i] < target) return false
+        if(nums[i] === target) return true
+    }
+    return false
+};
