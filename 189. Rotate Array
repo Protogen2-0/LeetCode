@@ -1,0 +1,10 @@
+
+function rotate(nums: number[], k: number): void {
+    if( nums.length === k || nums.length === 1) return
+    k = k % nums.length
+    let arr = [...nums]
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i - k] !== undefined) nums[i] = arr[i - k]
+        else nums[i] = arr[arr.length - k + i]
+    }
+}
