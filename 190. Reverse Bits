@@ -1,0 +1,7 @@
+class Solution {
+    public int reverseBits(int n) {
+        String s = Integer.toBinaryString(n);
+        s = "0".repeat(32 - s.length()) + s;
+        return Integer.parseInt(new StringBuilder(s).reverse().toString(), 2);
+    }
+}
