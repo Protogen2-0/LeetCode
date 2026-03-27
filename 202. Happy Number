@@ -1,0 +1,14 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        Set = set()
+        s = str(n)
+        while(True):
+            result = 0
+            for char in s:
+                result += int(char) ** 2
+            if(result == 1): return True
+            if(result in Set): break
+            Set.add(result)
+            s = str(result)
+        return False
+        
